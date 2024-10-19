@@ -56,14 +56,14 @@ VNNLibrary/
 ```python
 import numpy as np
 from src.layers.vlinear_layer import VLinearLayer
-from src.layers.vsigmoid import VSigmoid
+from src.layers.vsigmoid_layer import VSigmoidLayer
 from src.orchestrators import Sequence
 
 # Example: A simple feedforward network with one hidden layer
 simpleNetwork = Sequence(
    name = 'A simple Network',
    VLinearLayer(input_size=3, output_size=5),
-   VSigmoid(),
+   VSigmoidLayer(),
    VLinearLayer(input_size=5, output_size=1)
 )
 
