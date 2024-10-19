@@ -63,8 +63,8 @@ from src.orchestrators import Sequence
 simpleNetwork = Sequence(
    name = 'A simple Network',
    VLinearLayer(input_size=3, output_size=5),
-   self.activation = VSigmoid(),
-   self.fc2 = VLinearLayer(input_size=5, output_size=1)
+   VSigmoid(),
+   VLinearLayer(input_size=5, output_size=1)
 )
 
 input_data = np.random.randn(3)
