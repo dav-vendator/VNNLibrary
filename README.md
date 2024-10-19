@@ -33,12 +33,14 @@ VNNLibrary/
 │   │   ├── __init__.py            # Initializes the layers submodule
 │   │   ├── vlinear_layer.py       # Implementation of linear layers
 │   │   └── vsigmoid.py            # Implementation of sigmoid activation
-│   └── models/
-│       ├── __init__.py            # Initializes the models submodule
-│       ├── vsimple_cnn.py         # Simple CNN architecture
-│       ├── vresnet.py             # ResNet architecture
-│       └── vrnn.py                # RNN architecture
-│
+│   ├── models/
+│   │    ├── __init__.py            # Initializes the models submodule
+│   │    ├── vsimple_cnn.py         # Simple CNN architecture
+│   │    ├── vresnet.py             # ResNet architecture
+│   │    └── vrnn.py                # RNN architecture
+│   └── Orchestrators/
+│       ├── __init__.py            # Initializes the orchestrators submodule
+│       └── sequence.py            # Simple feedforward orchestrator
 ├── tests/                         # Unit tests for layers and models
 │
 ├── examples/                      # Usage examples and scripts to train models
@@ -55,24 +57,18 @@ VNNLibrary/
 import numpy as np
 from src.layers.vlinear_layer import VLinearLayer
 from src.layers.vsigmoid import VSigmoid
+from src.orchestrators import Sequence
 
 # Example: A simple feedforward network with one hidden layer
-class SimpleNetwork(VNNModule):
-    def __init__(self):
-        super().__init__("SimpleNetwork")
-        self.fc1 = VLinearLayer(input_size=3, output_size=5)
-        self.activation = VSigmoid()
-        self.fc2 = VLinearLayer(input_size=5, output_size=1)
+simpleNetwork = Sequence(
+   name = 'A simple Network',
+   VLinearLayer(input_size=3, output_size=5),
+   self.activation = VSigmoid(),
+   self.fc2 = VLinearLayer(input_size=5, output_size=1)
+)
 
-    def forward(self, x: np.ndarray) -> np.ndarray:
-        out = self.fc1(x)
-        out = self.activation(out)
-        out = self.fc2(out)
-        return out
-
-model = SimpleNetwork()
 input_data = np.random.randn(3)
-output = model(input_data)
+output = simpleNetwork(input_data)
 print(f"Model output: {output}")
 ```
 
