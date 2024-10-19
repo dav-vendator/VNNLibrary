@@ -32,7 +32,7 @@ VNNLibrary/
 │   ├── layers/
 │   │   ├── __init__.py            # Initializes the layers submodule
 │   │   ├── vlinear_layer.py       # Implementation of linear layers
-│   │   └── vsigmoid.py            # Implementation of sigmoid activation
+│   │   └── vsigmoid_layer.py      # Implementation of sigmoid activation
 │   ├── models/
 │   │    ├── __init__.py            # Initializes the models submodule
 │   │    ├── vsimple_cnn.py         # Simple CNN architecture
@@ -40,7 +40,7 @@ VNNLibrary/
 │   │    └── vrnn.py                # RNN architecture
 │   └── Orchestrators/
 │       ├── __init__.py            # Initializes the orchestrators submodule
-│       └── sequence.py            # Simple feedforward orchestrator
+│       └── vsequence.py           # Simple feedforward orchestrator
 ├── tests/                         # Unit tests for layers and models
 │
 ├── examples/                      # Usage examples and scripts to train models
@@ -57,10 +57,10 @@ VNNLibrary/
 import numpy as np
 from src.layers.vlinear_layer import VLinearLayer
 from src.layers.vsigmoid_layer import VSigmoidLayer
-from src.orchestrators import Sequence
+from src.orchestrators import VSequence
 
 # Example: A simple feedforward network with one hidden layer
-simpleNetwork = Sequence(
+simpleNetwork = VSequence(
    name = 'A simple Network',
    VLinearLayer(input_size=3, output_size=5),
    VSigmoidLayer(),
