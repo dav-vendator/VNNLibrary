@@ -32,7 +32,7 @@ VNNLibrary/
 │   ├── layers/
 │   │   ├── __init__.py            # Initializes the layers submodule
 │   │   ├── vlinear_layer.py       # Implementation of linear layers
-│   │   └── vsigmoid_layer.py      # Implementation of sigmoid activation
+│   │   └── vactivation_layer.py   # Implementation of various activation
 │   ├── models/
 │   │    ├── __init__.py            # Initializes the models submodule
 │   │    ├── vsimple_cnn.py         # Simple CNN architecture
@@ -63,7 +63,7 @@ from src.orchestrators import VSequence
 simpleNetwork = VSequence(
    name = 'A simple Network',
    VLinearLayer(input_size=3, output_size=5),
-   VSigmoidLayer(),
+   VSigmoidLayer(output_size=5),
    VLinearLayer(input_size=5, output_size=1)
 )
 
